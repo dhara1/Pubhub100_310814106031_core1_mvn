@@ -27,17 +27,30 @@ public class BookDAO {
 		}
 		
 	}
+	@SuppressWarnings("null")
 	public void alterPrice(Book book) {
 		Connection connection = null;
+		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			PreparedStatement pst = connection.prepareStatement("UPDATE books SET price=? WHERE NAME=?");
+		    connection.prepareStatement("UPDATE books SET price=? WHERE NAME=?");
 			pst.setInt(1,book.getPrice());
 			pst.setString(2,book.getName());
 			pst.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			try {
+				
+				
+				pst.close();
+				connection.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
 		}
 	
 	}
