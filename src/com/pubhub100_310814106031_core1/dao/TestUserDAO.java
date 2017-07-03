@@ -5,7 +5,7 @@ import com.pubhub100_310814106031_core1.model.User;
 
 public class TestUserDAO {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
 		User user=new User();
 	       
